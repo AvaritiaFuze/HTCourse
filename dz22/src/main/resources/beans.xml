@@ -1,0 +1,30 @@
+<!-- beans.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="wheel" class="Wheel"/>
+    <bean id="starter" class="Starter"/>
+    <bean id="sparkPlug" class="SparkPlug"/>
+    <bean id="accumulator" class="Accumulator"/>
+    <bean id="hinge" class="Hinge"/>
+    <bean id="differential" class="Differential"/>
+
+    <bean id="suspension" class="Suspension">
+        <property name="hinge" ref="hinge"/>
+        <property name="differential" ref="differential"/>
+    </bean>
+
+    <bean id="engine" class="Engine">
+        <property name="starter" ref="starter"/>
+        <property name="sparkPlug" ref="sparkPlug"/>
+    </bean>
+
+    <bean id="car" class="Car">
+        <property name="wheel" ref="wheel"/>
+        <property name="engine" ref="engine"/>
+        <property name="suspension" ref="suspension"/>
+        <property name="accumulator" ref="accumulator"/>
+    </bean>
+</beans>
